@@ -1,2 +1,2 @@
-# ACA---MPI_Ricerca_Genoma-
+# ACA - MPI_Ricerca_Genoma
 Advanced Computer Architecture project
