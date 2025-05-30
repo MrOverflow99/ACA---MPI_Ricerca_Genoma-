@@ -5,7 +5,7 @@
 #ifndef HASH_FUNCT_H
 #define HASH_FUNCT_H
 
-#include "hash_funct_h"
+#include "hash_funct.h"
 #include <string.h>
 #include <math.h>
 #include <limits.h>
