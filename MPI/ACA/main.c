@@ -81,19 +81,19 @@ if (isActive) {
 		// Choose one of the following Boyer-Moore implementations:
 
 		// Standard Boyer-Moore (fastest, no hash verification)
-		occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
+			occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
 
 		// Boyer-Moore with FNV-1a hash verification
-		//occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen);
+		// occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen);
 
 		// Boyer-Moore with xxHash32 verification
-		//occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen);
+		// occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen);
 
 		// Boyer-Moore with CRC32 hash verification
-		//occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen);
+		// occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen);
 
 		// Boyer-Moore with MurmurHash2 verification
-		//occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen);
+		// occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen);
 
 		////////////////////// Free the memory \\\\\\\\\\\\\\\\\\\\\
 	

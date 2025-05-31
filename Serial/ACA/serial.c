@@ -90,14 +90,14 @@ long long int boyer_moore_search(const char *text, const char *pattern, size_t t
     null_check(good_suffix);
 
     long long int occurrences = 0;
-    int shift = 0;
+    size_t shift = 0;
 
     // Preprocessing
     compute_bad_char_table(pattern, patlen, bad_char);
     compute_good_suffix_table(pattern, patlen, good_suffix);
 
     // Searching
-    while (shift <= (int)(textlen - patlen)) {
+    while (shift <= (textlen - patlen)) {
         int j = patlen - 1;
 
         // Keep reducing index j while characters of pattern and text match
@@ -130,7 +130,7 @@ long long int boyer_moore_##funcname(const char *text, const char *pattern, size
     null_check(good_suffix); \
     \
     long long int occurrences = 0; \
-    int shift = 0; \
+    size_t shift = 0; \
     \
     /* Preprocessing */ \
     compute_bad_char_table(pattern, patlen, bad_char); \
@@ -140,7 +140,7 @@ long long int boyer_moore_##funcname(const char *text, const char *pattern, size
     uint32_t pattern_hash = hashfunc(pattern); \
     \
     /* Searching with hash verification */ \
-    while (shift <= (int)(textlen - patlen)) { \
+    while (shift <= (textlen - patlen)) { \
         /* Extract substring and compute its hash */ \
         char *substring = (char*)malloc(sizeof(char) * (patlen + 1)); \
         null_check(substring); \
@@ -191,7 +191,7 @@ long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t
     null_check(good_suffix);
 
     long long int occurrences = 0;
-    int shift = 0;
+    size_t shift = 0;
 
     // Preprocessing
     compute_bad_char_table(pattern, patlen, bad_char);
@@ -201,7 +201,7 @@ long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t
     uint32_t pattern_hash = xxhash32(pattern, 0);
 
     // Searching with hash verification
-    while (shift <= (int)(textlen - patlen)) {
+    while (shift <= (textlen - patlen)) {
         // Extract substring and compute its hash
         char *substring = (char*)malloc(sizeof(char) * (patlen + 1));
         null_check(substring);
@@ -265,19 +265,19 @@ int main(int argc, char const *argv[])
     // Choose one of the following Boyer-Moore implementations:
 
     // Standard Boyer-Moore (fastest, no hash verification)
-    occurrences = boyer_moore_search(txt, pattern, txtlen, patlen);
+       occurrences = boyer_moore_search(txt, pattern, txtlen, patlen);
 
     // Boyer-Moore with FNV-1a hash verification
-    //occurrences = boyer_moore_fnv1a(txt, pattern, txtlen, patlen);
+    // occurrences = boyer_moore_fnv1a(txt, pattern, txtlen, patlen);
 
     // Boyer-Moore with xxHash32 verification
-    //occurrences = boyer_moore_xxhash32(txt, pattern, txtlen, patlen);
+    // occurrences = boyer_moore_xxhash32(txt, pattern, txtlen, patlen);
 
     // Boyer-Moore with CRC32 hash verification
-    //occurrences = boyer_moore_crc32(txt, pattern, txtlen, patlen);
+    // occurrences = boyer_moore_crc32(txt, pattern, txtlen, patlen);
 
     // Boyer-Moore with MurmurHash2 verification
-    //occurrences = boyer_moore_murmur2(txt, pattern, txtlen, patlen);
+    // occurrences = boyer_moore_murmur2(txt, pattern, txtlen, patlen);
 
     printf("Total occurrences found: %lld\n", occurrences);
 
