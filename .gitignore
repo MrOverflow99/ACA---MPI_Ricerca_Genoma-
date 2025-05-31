@@ -1,1 +1,15 @@
+# File grandi
 sequenza_pulita.txt
+genoma.txt
+
+# File binari e oggetto
+*.o
+main
+a.out
+
+# Directory di build
+/build/
+/cmake-build-debug/
+
+# File IDE
+.idea/sequenza_pulita.txt
