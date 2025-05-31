@@ -1,6 +1,3 @@
-//
-// Created by miguel on 5/30/25.
-//
 
 #ifndef BOYER_MOORE_H
 #define BOYER_MOORE_H
