@@ -1,5 +1,5 @@
 #include "utilities.h"
-
+#include <bsd/string.h>
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //Check if a pointer is null. This function has been created to avoid
 //to repeat many times the check of the pointer inside the code.
@@ -72,66 +72,3 @@ char *readFile(char *filename, size_t *len) {
     return txt;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//This function split the text (received as input) into chunks among
-//the active cores.
-//The cores with rank from 0 to n-2 receive a chunk of length offset
-//and the core n-1 receive the remaining part of the text.
-//The function takes into account also the overlapping occurrences
-//of the pattern, simply copying also "patlen" extra characters in
-//the chunk.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-/*
- *char *split_dataset(char *txt, size_t *chunklen, size_t txtlen, size_t patlen, size_t offset, int executors){
-
-	char *chunk = (char *)malloc(sizeof(char) * (offset +1));
-	null_check(chunk);
-	strlcpy(chunk, txt, offset+1);
-	chunk[offset] = '\0';
-	*chunklen = offset;
-
-		for (int i = 1; i < executors; ++i)
-		{
-			if (i <= executors-2)
-			{
-					MPI_Send(txt+(offset*i)-patlen+1, offset + patlen-1, MPI_CHAR, i, 100, MPI_COMM_WORLD);
-			} else {
-					MPI_Send(txt+(offset*i)-patlen+1, txtlen - offset*i + patlen -1, MPI_CHAR, i, 101, MPI_COMM_WORLD);
-			}
-		}
-	return chunk;
-}
-*
-*/
-
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//This function allows to the core who invoke it, to receive its
-//chunk of text to analyze.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-/*
- *char *receive_dataset(size_t offset, size_t txtlen, size_t patlen, size_t *chunklen, int rank, int executors) {
-    char *chunk = NULL;  // Corretto: dichiarato come puntatore
-
-    if (rank < executors-1) {
-        *chunklen = offset + patlen - 1;
-        chunk = (char *)malloc(sizeof(char) * (*chunklen + 1));
-        null_check(chunk);
-        chunk[*chunklen] = '\0';
-        MPI_Recv(chunk, *chunklen, MPI_CHAR, 0, 100, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        return chunk;
-    }
-
-    if (rank == executors-1) {
-        *chunklen = txtlen - rank * offset + patlen - 1;
-        chunk = (char *)malloc(sizeof(char) * (*chunklen + 1));
-        null_check(chunk);
-        chunk[*chunklen] = '\0';
-        MPI_Recv(chunk, *chunklen, MPI_CHAR, 0, 101, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        return chunk;
-    }
-
-    return NULL;
-}
-*/
