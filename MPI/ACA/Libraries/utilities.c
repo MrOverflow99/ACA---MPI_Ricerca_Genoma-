@@ -1,4 +1,5 @@
 #include "utilities.h"
+#include <bsd/string.h>
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //Check if a pointer is null. This function has been created to avoid

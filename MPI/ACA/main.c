@@ -113,7 +113,7 @@ if (rank == 0) {
 	printf("Total occurrences: %lld\n", total);
 	printf("Time required: %lf seconds\n", time_spent);
 	printf("Program executed by %d cores over %d\n", executors, size);
-	printf("Algorithm: Boyer-Moore with new hash functions (FNV, xxHash, CRC32, MurmurHash)\n");
+	// printf("Algorithm: Boyer-Moore with new hash functions (FNV, xxHash, CRC32, MurmurHash)\n");
 }
 
 ////////////////////// MPI layer Finalization \\\\\\\\\\\\\\\\\\\\\
