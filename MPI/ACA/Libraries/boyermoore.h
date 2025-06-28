@@ -19,9 +19,18 @@ void compute_good_suffix_table(const char *pattern, int patlen, int *good_suffix
 long long int boyer_moore_search(const char *text, const char *pattern, size_t textlen, size_t patlen);
 
 // Boyer-Moore with hash verification functions
-long long int boyer_moore_fnv1a(const char *text, const char *pattern, size_t textlen, size_t patlen);
-long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t textlen, size_t patlen);
-long long int boyer_moore_crc32(const char *text, const char *pattern, size_t textlen, size_t patlen);
-long long int boyer_moore_murmur2(const char *text, const char *pattern, size_t textlen, size_t patlen);
+long long int boyer_moore_fnv1a(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_crc32(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_murmur2(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_addshift(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_djb2(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_poly(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+
+////////////////////////////////////
+
+long long int boyer_moore_xor(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_better(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+
 
 #endif

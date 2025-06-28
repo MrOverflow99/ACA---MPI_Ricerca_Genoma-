@@ -30,6 +30,8 @@ size_t chunklen;
 size_t offset = 0;
 long long int occurrences = 0;
 long long int total = 0;
+long long int collisions = 0;
+long long int total_collisions = 0;
 
 ////////////////////// MPI layer initializzation \\\\\\\\\\\\\\\\\\\\\
 
@@ -47,9 +49,9 @@ if (rank == 0)
 	null_check(pattern);									//Check if the pointer to the pattern is not null
 	executors = who_is_active(flag, txtlen, patlen, size); 					//Compute the number of active cores
 
-	printf("Using Boyer-Moore algorithm with new hash functions\n");
-	printf("Text length: %zu, Pattern length: %zu\n", txtlen, patlen);
-	printf("Pattern: %s\n", pattern);
+	printf("Boyer-Moore algorithm with new hash functions\n");
+	printf("Text length: %zu\n", txtlen);
+	printf("Pattern: %s, Pattern length: %zu\n", pattern,  patlen);
 }
 
 	clock_t begin = clock(); //start the execution time measurement
@@ -81,19 +83,33 @@ if (isActive) {
 		// Choose one of the following Boyer-Moore implementations:
 
 		// Standard Boyer-Moore (fastest, no hash verification)
-			occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
+			//occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
 
 		// Boyer-Moore with FNV-1a hash verification
-		// occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen);
+		 //occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen, &collisions);
 
 		// Boyer-Moore with xxHash32 verification
-		// occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen);
+		 //occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen, &collisions);
 
 		// Boyer-Moore with CRC32 hash verification
-		// occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen);
+		// occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen, &collisions);
 
 		// Boyer-Moore with MurmurHash2 verification
-		// occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen);
+		//occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen, &collisions);
+
+		//poly
+		occurrences = boyer_moore_poly(chunk, pattern, chunklen, patlen, &collisions);
+		
+		//djb2
+		//occurrences = boyer_moore_djb2(chunk, pattern, chunklen, patlen, &collisions);
+
+		//xor.h
+		//occurrences = boyer_moore_xor(chunk, pattern, chunklen, patlen, &collisions);
+
+		//better_xor
+		//occurrences = boyer_moore_better(chunk, pattern, chunklen, patlen, &collisions);
+
+		
 
 		////////////////////// Free the memory \\\\\\\\\\\\\\\\\\\\\
 	
@@ -101,20 +117,28 @@ if (isActive) {
 		free(chunk); //free the pointer to the chunk
 	}
 
-printf("OCCURRENCES rank %d: %lld\n",rank, occurrences);
+printf("OCCURRENCES rank %d: %lld, COLLISIONS: %lld\n", rank, occurrences, collisions);
 	
 ////////////////////// Gather the results from other processes \\\\\\\\\\\\\\\\\\\\\
 
 MPI_Reduce(&occurrences, &total, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);		//The master process collects all the occurrences found by the slaves
+MPI_Reduce(&collisions, &total_collisions, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
 clock_t end = clock(); 										//Stop the execution time measurement
 
 if (rank == 0) {
-	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("Total occurrences: %lld\n", total);
-	printf("Time required: %lf seconds\n", time_spent);
-	printf("Program executed by %d cores over %d\n", executors, size);
-	// printf("Algorithm: Boyer-Moore with new hash functions (FNV, xxHash, CRC32, MurmurHash)\n");
-}
+        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        printf("Total occurrences: %lld\n", total);
+        printf("Total hash collisions: %lld\n", total_collisions);
+        printf("Time required: %lf seconds\n", time_spent);
+        printf("Program executed by %d cores over %d\n", executors, size);
+        
+        // Stampa statistiche sulle collisioni
+        if (total_collisions > 0) {
+            double collision_rate = (double)total_collisions / (double)(total + total_collisions) * 100.0;
+            printf("Collision rate: %.4f%%\n", collision_rate);
+        }
+    }
 
 ////////////////////// MPI layer Finalization \\\\\\\\\\\\\\\\\\\\\
 	

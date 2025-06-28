@@ -177,3 +177,62 @@ uint32_t murmur2_hash(const char *str, uint32_t seed) {
 
     return h;
 }
+
+uint64_t add_shift_hash(const char *str) {
+    uint64_t hash = 0;
+    while (*str) {
+        hash += (unsigned char)(*str);
+        hash = (hash << 3) | (hash >> (64 - 3));  // Rotate left by 3 bits
+        str++;
+    }
+    return hash % 4096; // Arbitrario per aumentare un po' l'entropia
+}
+
+uint64_t djb2_hash(const char *str) {
+    uint64_t hash = 5381;
+    while (*str) {
+        hash = ((hash << 5) + hash) ^ (unsigned char)(*str); // hash * 33 ^ c
+        str++;
+    }
+    return hash % 8192; // Riduciamo la dimensione per aumentare collisioni
+}
+
+uint64_t polyhash(const char *str){
+	const uint64_t p = 31;
+	const uint64_t m = 1000000009;
+	uint64_t hash = 0;
+	uint64_t p_pow = 1;
+
+	while(*str){
+		hash = (hash + (*str) * p_pow) % m;
+		p_pow = (p_pow * p) % m;
+		str++;
+	}
+
+	return hash;
+}
+
+
+
+////////////////////////////////////////////////////////////////
+/////Funzioni hash pensate apposta per essere pessime///////////
+////////////////////////////////////////////////////////////////
+
+
+uint64_t xor_h(const char *str){
+	uint64_t hash = 0;
+	while (*str){
+		hash ^= *str++;
+		return hash % 128;
+	}
+}
+
+uint64_t better_xor(const char *str){
+	uint64_t hash = 0;
+	while (*str){
+			hash ^= (uint64_t)(*str);
+			hash = (hash << 5) | (hash >> (64-5));
+			str++;
+		}
+		return hash % 2048;
+}

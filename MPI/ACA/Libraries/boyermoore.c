@@ -114,12 +114,13 @@ long long int boyer_moore_search(const char *text, const char *pattern, size_t t
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 #define BOYER_MOORE_WITH_HASH(hashfunc, funcname) \
-long long int boyer_moore_##funcname(const char *text, const char *pattern, size_t textlen, size_t patlen) { \
+long long int boyer_moore_##funcname(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions) { \
     int bad_char[ALPHABET_SIZE]; \
     int *good_suffix = (int*)malloc(sizeof(int) * (patlen + 1)); \
     null_check(good_suffix); \
     \
     long long int occurrences = 0; \
+    *collisions = 0; \
     int shift = 0; \
     \
     /* Preprocessing */ \
@@ -143,6 +144,9 @@ long long int boyer_moore_##funcname(const char *text, const char *pattern, size
         if (pattern_hash == text_hash) { \
             if (strncmp(pattern, text + shift, patlen) == 0) { \
                 occurrences++; \
+            } else { \
+                /* Hash collision detected: same hash but different strings */ \
+                (*collisions)++; \
             } \
         } \
         \
@@ -164,20 +168,29 @@ long long int boyer_moore_##funcname(const char *text, const char *pattern, size
     return occurrences; \
 }
 
+
+
 // Generate Boyer-Moore variants with different hash functions
 BOYER_MOORE_WITH_HASH(fnv1a_hash, fnv1a)
 BOYER_MOORE_WITH_HASH(crc32_hash, crc32)
 BOYER_MOORE_WITH_HASH(murmur2_hash_wrapper, murmur2)
+BOYER_MOORE_WITH_HASH(add_shift_hash, addshift)
+BOYER_MOORE_WITH_HASH(djb2_hash, djb2)
+BOYER_MOORE_WITH_HASH(polyhash, poly)
+
+BOYER_MOORE_WITH_HASH(xor_h, xor)
+BOYER_MOORE_WITH_HASH(better_xor, better)
 
 
 
 // Special case for xxhash32 which needs seed parameter
-long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t textlen, size_t patlen) {
+long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions) {
     int bad_char[ALPHABET_SIZE];
     int *good_suffix = (int*)malloc(sizeof(int) * (patlen + 1));
     null_check(good_suffix);
     
     long long int occurrences = 0;
+    *collisions = 0;
     int shift = 0;
     
     // Preprocessing
@@ -201,6 +214,9 @@ long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t
         if (pattern_hash == text_hash) {
             if (strncmp(pattern, text + shift, patlen) == 0) {
                 occurrences++;
+            } else {
+                // Hash collision detected
+                (*collisions)++;
             }
         }
         
