@@ -1,11 +1,5 @@
 #include "boyermoore.h"
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-// Compute the bad character table for Boyer-Moore algorithm
-// This table stores the rightmost occurrence of each character
-// in the pattern, used for skipping characters during search
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 // Wrapper for murmur2 hash to match signature
 static uint32_t murmur2_hash_wrapper(const char *str) {
     return murmur2_hash(str, 0x5bd1e995);
@@ -23,11 +17,6 @@ void compute_bad_char_table(const char *pattern, int patlen, int bad_char[ALPHAB
         bad_char[(int)pattern[i]] = i;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-// Compute the good suffix table for Boyer-Moore algorithm
-// This preprocessing helps in skipping characters when a mismatch
-// occurs but a suffix of the pattern matches
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 void compute_good_suffix_table(const char *pattern, int patlen, int *good_suffix) {
     int i, j;
@@ -68,8 +57,6 @@ void compute_good_suffix_table(const char *pattern, int patlen, int *good_suffix
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Standard Boyer-Moore string search algorithm
-// Uses bad character and good suffix heuristics for efficient
-// pattern matching with potential for skipping many characters
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 long long int boyer_moore_search(const char *text, const char *pattern, size_t textlen, size_t patlen) {
@@ -80,7 +67,7 @@ long long int boyer_moore_search(const char *text, const char *pattern, size_t t
     long long int occurrences = 0;
     int shift = 0;
 
-    // Preprocessing
+
     compute_bad_char_table(pattern, patlen, bad_char);
     compute_good_suffix_table(pattern, patlen, good_suffix);
 
@@ -178,7 +165,6 @@ BOYER_MOORE_WITH_HASH(murmur2_hash_wrapper, murmur2)
 BOYER_MOORE_WITH_HASH(add_shift_hash, addshift)
 BOYER_MOORE_WITH_HASH(djb2_hash, djb2)
 BOYER_MOORE_WITH_HASH(polyhash, poly)
-
 BOYER_MOORE_WITH_HASH(xor_h, xor)
 BOYER_MOORE_WITH_HASH(better_xor, better)
 

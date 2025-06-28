@@ -1,10 +1,6 @@
 #include "utilities.h"
 #include <bsd/string.h>
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//Check if a pointer is null. This function has been created to avoid
-//to repeat many times the check of the pointer inside the code.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 void null_check(void *ptr){
 	if (!ptr)
@@ -13,17 +9,6 @@ void null_check(void *ptr){
 		exit(1);
 	}
 }
-
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//Check how many cores can be active.
-//The splitting of the text is done dividing the length of the text by
-//the length of the pattern. If this division is greater than the
-//available number of cores, the maximum number of available cores is
-//used (active cores); else the quotient of the previous division is
-//the number of active cores.
-//The vector flag, is like a bitmap used to notify to the cores who
-//can be active or not.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 size_t who_is_active(int *flag, size_t txtlen, size_t patlen, int cores){
 
@@ -44,12 +29,6 @@ size_t who_is_active(int *flag, size_t txtlen, size_t patlen, int cores){
 	return actives;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//This function computes the length of the file and read it.
-//I used ftello because the return value is of type off_t (64 bit) ->
-//->it's possible to read file of size > 2GB.
-//fseek and ftell are able to handle 32 bits values (at most 2GB)
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 char *readFile(char *filename, size_t *len) {
 
@@ -73,16 +52,6 @@ char *readFile(char *filename, size_t *len) {
     return txt;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//This function split the text (received as input) into chunks among
-//the active cores.
-//The cores with rank from 0 to n-2 receive a chunk of length offset
-//and the core n-1 receive the remaining part of the text.
-//The function takes into account also the overlapping occurrences
-//of the pattern, simply copying also "patlen" extra characters in
-//the chunk.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 char *split_dataset(char *txt, size_t *chunklen, size_t txtlen, size_t patlen, size_t offset, int executors){
 
 	char *chunk = (char *)malloc(sizeof(char) * (offset +1));
@@ -102,11 +71,6 @@ char *split_dataset(char *txt, size_t *chunklen, size_t txtlen, size_t patlen, s
 		}
 	return chunk;
 }
-
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//This function allows to the core who invoke it, to receive its
-//chunk of text to analyze.
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 char *receive_dataset(size_t offset, size_t txtlen, size_t patlen, size_t *chunklen, int rank, int executors) {
     char *chunk = NULL;  // Corretto: dichiarato come puntatore

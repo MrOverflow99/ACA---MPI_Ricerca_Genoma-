@@ -2,8 +2,6 @@
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // FNV-1a Hash Function (32-bit)
-// Fast, simple hash function with good distribution properties
-// Uses XOR and multiplication with FNV constants
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 uint32_t fnv1a_hash(const char *str) {
@@ -20,7 +18,6 @@ uint32_t fnv1a_hash(const char *str) {
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // FNV-1a Hash Function (64-bit)
-// 64-bit version for better hash distribution on larger datasets
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 uint64_t fnv1a_hash64(const char *str) {
@@ -37,8 +34,6 @@ uint64_t fnv1a_hash64(const char *str) {
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // xxHash32 - Extremely fast hash function
-// Designed for speed while maintaining good hash quality
-// Uses multiple rounds of mixing with prime constants
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 static uint32_t xxh32_rotl(uint32_t x, int r) {
@@ -98,8 +93,6 @@ uint32_t xxhash32(const char *str, uint32_t seed) {
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // CRC32 Hash Function
-// Cyclic Redundancy Check adapted as hash function
-// Good for error detection and provides uniform distribution
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 static uint32_t crc32_table[256];
@@ -138,8 +131,6 @@ uint32_t crc32_hash(const char *str) {
 
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // MurmurHash2 Function
-// High-performance hash function with good distribution
-// Uses mixing of bits through multiplication and bit shifts
 ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 uint32_t murmur2_hash(const char *str, uint32_t seed) {

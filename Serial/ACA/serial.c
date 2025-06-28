@@ -6,11 +6,6 @@
 #include "Libraries/hash_funct.h"
 #include "Libraries/utilities.h"
 
-/////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//////////////////////// Main Body \\\\\\\\\\\\\\\\\\\\\\\
-//////////////// Serial Boyer-Moore Implementation \\\\\\\\\\\\\\\\
-/////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 #define ALPHABET_SIZE 256
 #define max(a, b) ((a) > (b) ? (a) : (b))
 
@@ -235,9 +230,7 @@ long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t
     return occurrences;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////// Main function \\\\\\\\\\\\\\\\\\\\\\\\\\\\
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/* FUNZIONE MAIN */
 
 int main(int argc, char const *argv[])
 {
