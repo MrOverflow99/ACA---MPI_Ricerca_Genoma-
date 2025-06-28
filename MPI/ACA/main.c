@@ -8,147 +8,147 @@
 #include "./Libraries/hash_funct.h"
 #include "./Libraries/boyermoore.h"
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////// Main function \\\\\\\\\\\\\\\\\\\\\\\\\\\\
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 int main(int argc, char *argv[])
 {
+    int rank;
+    int size;
+    int isActive = 0;
+    int executors;
+    char *txt;
+    char *pattern;
+    char *chunk;
+    size_t txtlen;
+    size_t patlen;
+    size_t chunklen;
+    size_t offset = 0;
+    long long int occurrences = 0;
+    long long int total = 0;
+    long long int collisions = 0;
+    long long int total_collisions = 0;
+    int choice = 0;
 
-//////////////////////// Variables definition \\\\\\\\\\\\\\\\\\\\\\\\
+    // MPI Initialization
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-int rank;
-int size;
-int isActive = 0;
-int executors;
-char *txt;
-char *pattern;
-char *chunk;
-size_t txtlen;
-size_t patlen;
-size_t chunklen;
-size_t offset = 0;
-long long int occurrences = 0;
-long long int total = 0;
-long long int collisions = 0;
-long long int total_collisions = 0;
+    int flag[size];
 
-////////////////////// MPI layer initializzation \\\\\\\\\\\\\\\\\\\\\
+    if (rank == 0) {
+        txt = readFile(argv[1], &txtlen);
+        pattern = readFile(argv[2], &patlen);
+        null_check(txt);
+        null_check(pattern);
+        executors = who_is_active(flag, txtlen, patlen, size);
 
-MPI_Init(&argc, &argv);
-MPI_Comm_rank(MPI_COMM_WORLD, &rank); 								//Get rank
-MPI_Comm_size(MPI_COMM_WORLD, &size); 								//Get size of the communicator
+        printf("Boyer-Moore algorithm with new hash functions\n");
+        printf("Text length: %zu\n", txtlen);
+        printf("Pattern: %s, Pattern length: %zu\n\n", pattern, patlen);
 
-int flag[size]; //Vector of active cores
+        printf("Select hash function:\n");
+        printf("1. Standard Boyer-Moore (no hash)\n");
+        printf("2. FNV-1a\n");
+        printf("3. FNV-1a 64Bit\n");
+        printf("4. xxHash32\n");
+        printf("5. CRC32\n");
+        printf("6. MurmurHash2\n");
+        printf("7. PolyHash (custom)\n");
+        printf("8. DJB2\n");
+        printf("9. AddShift-hash\n");
+        printf("10. XOR\n");
+        printf("11. Better XOR\n");
+        printf("Choice: ");
+        scanf("%d", &choice);
+    }
 
-if (rank == 0)
-{
-	txt = readFile(argv[1], &txtlen);							//Read text
-	pattern = readFile(argv[2], &patlen);							//Read pattern
-	null_check(txt);									//Check if the pointer to the text is not null
-	null_check(pattern);									//Check if the pointer to the pattern is not null
-	executors = who_is_active(flag, txtlen, patlen, size); 					//Compute the number of active cores
+    clock_t begin = clock();
+    MPI_Bcast(&executors, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Scatter(flag, 1, MPI_INT, &isActive, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&txtlen, 1, MPI_LONG_LONG, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&patlen, 1, MPI_LONG_LONG, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&choice, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
-	printf("Boyer-Moore algorithm with new hash functions\n");
-	printf("Text length: %zu\n", txtlen);
-	printf("Pattern: %s, Pattern length: %zu\n", pattern,  patlen);
-}
+    if (isActive) {
+        offset = txtlen / executors;
+        if (rank == 0) {
+            chunk = split_dataset(txt, &chunklen, txtlen, patlen, offset, executors);
+            null_check(chunk);
+            free(txt);
+            for (int i = 1; i < executors; ++i) {
+                MPI_Send(pattern, patlen, MPI_CHAR, i, 105, MPI_COMM_WORLD);
+            }
+        } else {
+            pattern = (char *)malloc(sizeof(char) * (patlen + 1));
+            null_check(pattern);
+            pattern[patlen] = '\0';
+            chunk = receive_dataset(offset, txtlen, patlen, &chunklen, rank, executors);
+            null_check(chunk);
+            MPI_Recv(pattern, patlen, MPI_CHAR, 0, 105, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        }
 
-	clock_t begin = clock(); //start the execution time measurement
-	MPI_Bcast(&executors, 1, MPI_INT, 0, MPI_COMM_WORLD);					//Send to each core the number of cores that will perform the search
-	MPI_Scatter(flag, 1, MPI_INT, &isActive, 1, MPI_INT, 0, MPI_COMM_WORLD);		//Send to each core a value that specify if the core will be and executor or not
-	MPI_Bcast(&txtlen, 1, MPI_LONG_LONG, 0, MPI_COMM_WORLD);				//Send to each core the length of the text
-	MPI_Bcast(&patlen, 1, MPI_LONG_LONG, 0, MPI_COMM_WORLD);				//Send to each core the length of the pattern
+        switch (choice) {
+            case 1:
+                occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
+                break;
+            case 2:
+                occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 3:
+                occurrences = boyer_moore_fnv1a64(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 4:
+                occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 5:
+                occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 6:
+                occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 7:
+                occurrences = boyer_moore_poly(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 8:
+                occurrences = boyer_moore_djb2(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 9:
+                occurrences = boyer_moore_addshift(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 10:
+                occurrences = boyer_moore_xor(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            case 11:
+                occurrences = boyer_moore_better(chunk, pattern, chunklen, patlen, &collisions);
+                break;
+            default:
+                if (rank == 0) fprintf(stderr, "Invalid choice.\n");
+                MPI_Abort(MPI_COMM_WORLD, 1);
+        }
 
-if (isActive) {
-	offset = txtlen/executors;								//Compute the portion of text to analyze
-	if (rank == 0) {
-		chunk = split_dataset(txt, &chunklen, txtlen, patlen, offset, executors); 	//Sending a chunk of text to each core
-		null_check(chunk);
-		free(txt);
-		for (int i = 1; i < executors; ++i){
-			MPI_Send(pattern, patlen, MPI_CHAR, i, 105, MPI_COMM_WORLD); 		//Sending the pattern to all the cores
-		}
-	} else {
-		pattern = (char *)malloc(sizeof(char)*(patlen+1));
-		null_check(pattern);
-		pattern[patlen]='\0';
-		chunk = receive_dataset(offset, txtlen, patlen, &chunklen, rank, executors); 	//The slaves receive the corresponding chunk of text
-		null_check(chunk);
-		MPI_Recv(pattern, patlen, MPI_CHAR, 0, 105, MPI_COMM_WORLD, MPI_STATUS_IGNORE); //The slaves receive the pattern
-		}
+        free(pattern);
+        free(chunk);
+    }
 
-		////////////////////// Boyer-Moore algorithm with different hash functions \\\\\\\\\\\\\\\\\\\\\
+    printf("OCCURRENCES rank %d: %lld, COLLISIONS: %lld\n", rank, occurrences, collisions);
 
-		// Choose one of the following Boyer-Moore implementations:
+    MPI_Reduce(&occurrences, &total, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    MPI_Reduce(&collisions, &total_collisions, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
-		// Standard Boyer-Moore (fastest, no hash verification)
-			//occurrences = boyer_moore_search(chunk, pattern, chunklen, patlen);
+    clock_t end = clock();
 
-		// Boyer-Moore with FNV-1a hash verification
-		 //occurrences = boyer_moore_fnv1a(chunk, pattern, chunklen, patlen, &collisions);
-
-		// Boyer-Moore with xxHash32 verification
-		 //occurrences = boyer_moore_xxhash32(chunk, pattern, chunklen, patlen, &collisions);
-
-		// Boyer-Moore with CRC32 hash verification
-		// occurrences = boyer_moore_crc32(chunk, pattern, chunklen, patlen, &collisions);
-
-		// Boyer-Moore with MurmurHash2 verification
-		//occurrences = boyer_moore_murmur2(chunk, pattern, chunklen, patlen, &collisions);
-
-		//poly
-		occurrences = boyer_moore_poly(chunk, pattern, chunklen, patlen, &collisions);
-		
-		//djb2
-		//occurrences = boyer_moore_djb2(chunk, pattern, chunklen, patlen, &collisions);
-
-		//xor.h
-		//occurrences = boyer_moore_xor(chunk, pattern, chunklen, patlen, &collisions);
-
-		//better_xor
-		//occurrences = boyer_moore_better(chunk, pattern, chunklen, patlen, &collisions);
-
-		
-
-		////////////////////// Free the memory \\\\\\\\\\\\\\\\\\\\\
-	
-		free(pattern); //free the pattern pointer
-		free(chunk); //free the pointer to the chunk
-	}
-
-printf("OCCURRENCES rank %d: %lld, COLLISIONS: %lld\n", rank, occurrences, collisions);
-	
-////////////////////// Gather the results from other processes \\\\\\\\\\\\\\\\\\\\\
-
-MPI_Reduce(&occurrences, &total, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);		//The master process collects all the occurrences found by the slaves
-MPI_Reduce(&collisions, &total_collisions, 1, MPI_LONG_LONG_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-
-clock_t end = clock(); 										//Stop the execution time measurement
-
-if (rank == 0) {
+    if (rank == 0) {
         double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
         printf("Total occurrences: %lld\n", total);
         printf("Total hash collisions: %lld\n", total_collisions);
         printf("Time required: %lf seconds\n", time_spent);
         printf("Program executed by %d cores over %d\n", executors, size);
-        
-        // Stampa statistiche sulle collisioni
+
         if (total_collisions > 0) {
             double collision_rate = (double)total_collisions / (double)(total + total_collisions) * 100.0;
             printf("Collision rate: %.4f%%\n", collision_rate);
         }
     }
 
-////////////////////// MPI layer Finalization \\\\\\\\\\\\\\\\\\\\\
-	
-MPI_Finalize();	
-
-return 0;
+    MPI_Finalize();
+    return 0;
 }
-
-//References
-//https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
-//http://www.isthe.com/chongo/tech/comp/fnv/
-//https://cyan4973.github.io/xxHash/
-//https://en.wikipedia.org/wiki/MurmurHash

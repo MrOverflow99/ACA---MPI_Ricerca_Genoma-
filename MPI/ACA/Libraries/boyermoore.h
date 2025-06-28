@@ -20,6 +20,7 @@ long long int boyer_moore_search(const char *text, const char *pattern, size_t t
 
 // Boyer-Moore with hash verification functions
 long long int boyer_moore_fnv1a(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
+long long int boyer_moore_fnv1a64(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
 long long int boyer_moore_xxhash32(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
 long long int boyer_moore_crc32(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);
 long long int boyer_moore_murmur2(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions);

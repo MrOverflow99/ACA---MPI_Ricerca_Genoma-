@@ -33,5 +33,14 @@ uint64_t fnv1a_hash64(const char *str);
 uint32_t xxhash32(const char *str, uint32_t seed);
 uint32_t crc32_hash(const char *str);
 uint32_t murmur2_hash(const char *str, uint32_t seed);
+uint64_t djb2_hash(const char *str);
+uint64_t add_shift_hash(const char *str);
+uint64_t polyhash(const char *str);
+
+////////////////////
+/////HashPessime////
+////////////////////
+uint64_t xor_h(const char *str);
+uint64_t better_xor(const char *str);
 
 #endif

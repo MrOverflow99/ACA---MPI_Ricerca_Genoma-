@@ -172,6 +172,7 @@ long long int boyer_moore_##funcname(const char *text, const char *pattern, size
 
 // Generate Boyer-Moore variants with different hash functions
 BOYER_MOORE_WITH_HASH(fnv1a_hash, fnv1a)
+BOYER_MOORE_WITH_HASH(fnv1a_hash64, fnv1a64)
 BOYER_MOORE_WITH_HASH(crc32_hash, crc32)
 BOYER_MOORE_WITH_HASH(murmur2_hash_wrapper, murmur2)
 BOYER_MOORE_WITH_HASH(add_shift_hash, addshift)
