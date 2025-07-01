@@ -1,0 +1,423 @@
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 16.506642 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+2
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 19.373915 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+3
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 19.834352 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+4
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 20.732731 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+5
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 18.957383 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+6
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 25.159837 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main 
+sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+7
+OCCURRENCES rank 6: 9643, COLLISIONS: 0
+OCCURRENCES rank 13: 11642, COLLISIONS: 0
+OCCURRENCES rank 11: 11528, COLLISIONS: 0
+OCCURRENCES rank 12: 11989, COLLISIONS: 0
+OCCURRENCES rank 5: 8437, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 0
+OCCURRENCES rank 4: 10429, COLLISIONS: 0
+OCCURRENCES rank 1: 10758, COLLISIONS: 0
+OCCURRENCES rank 8: 9114, COLLISIONS: 0
+OCCURRENCES rank 15: 12974, COLLISIONS: 0
+OCCURRENCES rank 14: 11280, COLLISIONS: 0
+OCCURRENCES rank 3: 11792, COLLISIONS: 0
+OCCURRENCES rank 10: 13377, COLLISIONS: 0
+OCCURRENCES rank 9: 12448, COLLISIONS: 0
+OCCURRENCES rank 2: 11483, COLLISIONS: 0
+OCCURRENCES rank 7: 11760, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 26.051243 seconds
+Program executed by 16 cores over 16
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+8
+OCCURRENCES rank 6: 9643, COLLISIONS: 18334
+OCCURRENCES rank 13: 11642, COLLISIONS: 18880
+OCCURRENCES rank 12: 11989, COLLISIONS: 19077
+OCCURRENCES rank 11: 11528, COLLISIONS: 19285
+OCCURRENCES rank 5: 8437, COLLISIONS: 17263
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 19207
+OCCURRENCES rank 4: 10429, COLLISIONS: 18855
+OCCURRENCES rank 1: 10758, COLLISIONS: 18771
+OCCURRENCES rank 2: 11483, COLLISIONS: 18948
+OCCURRENCES rank 15: 12974, COLLISIONS: 19861
+OCCURRENCES rank 14: 11280, COLLISIONS: 19175
+OCCURRENCES rank 3: 11792, COLLISIONS: 18738
+OCCURRENCES rank 8: 9114, COLLISIONS: 17957
+OCCURRENCES rank 9: 12448, COLLISIONS: 19191
+OCCURRENCES rank 10: 13377, COLLISIONS: 19788
+OCCURRENCES rank 7: 11760, COLLISIONS: 19496
+Total occurrences: 179578
+Total hash collisions: 302826
+Time required: 20.853475 seconds
+Program executed by 16 cores over 16
+Collision rate: 62.7744%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+9
+OCCURRENCES rank 6: 9643, COLLISIONS: 2238137
+OCCURRENCES rank 12: 11989, COLLISIONS: 2666530
+OCCURRENCES rank 13: 11642, COLLISIONS: 2537892
+OCCURRENCES rank 11: 11528, COLLISIONS: 2527886
+OCCURRENCES rank 5: 8437, COLLISIONS: 2054451
+OCCURRENCES rank 1: 10758, COLLISIONS: 2358879
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 2379631
+OCCURRENCES rank 4: 10429, COLLISIONS: 2329157
+OCCURRENCES rank 15: 12974, COLLISIONS: 2505485
+OCCURRENCES rank 14: 11280, COLLISIONS: 2445112
+OCCURRENCES rank 2: 11483, COLLISIONS: 2419010
+OCCURRENCES rank 3: 11792, COLLISIONS: 2632484
+OCCURRENCES rank 8: 9114, COLLISIONS: 2118795
+OCCURRENCES rank 10: 13377, COLLISIONS: 2890694
+OCCURRENCES rank 7: 11760, COLLISIONS: 2561757
+OCCURRENCES rank 9: 12448, COLLISIONS: 2669245
+Total occurrences: 179578
+Total hash collisions: 39335145
+Time required: 18.366329 seconds
+Program executed by 16 cores over 16
+Collision rate: 99.5455%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+10
+OCCURRENCES rank 6: 9643, COLLISIONS: 13987277
+OCCURRENCES rank 13: 11642, COLLISIONS: 14788475
+OCCURRENCES rank 11: 11528, COLLISIONS: 14764718
+OCCURRENCES rank 12: 11989, COLLISIONS: 15197409
+OCCURRENCES rank 5: 8437, COLLISIONS: 13522353
+OCCURRENCES rank 1: 10758, COLLISIONS: 14259130
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 14270592
+OCCURRENCES rank 8: 9114, COLLISIONS: 13710265
+OCCURRENCES rank 4: 10429, COLLISIONS: 14211333
+OCCURRENCES rank 15: 12974, COLLISIONS: 15118670
+OCCURRENCES rank 3: 11792, COLLISIONS: 15032366
+OCCURRENCES rank 2: 11483, COLLISIONS: 14488839
+OCCURRENCES rank 7: 11760, COLLISIONS: 14865102
+OCCURRENCES rank 9: 12448, COLLISIONS: 15168852
+OCCURRENCES rank 14: 11280, COLLISIONS: 14493279
+OCCURRENCES rank 10: 13377, COLLISIONS: 15647769
+Total occurrences: 179578
+Total hash collisions: 233526429
+Time required: 18.507758 seconds
+Program executed by 16 cores over 16
+Collision rate: 99.9232%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 16 --hostfile ~/hostfilev2.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+11
+OCCURRENCES rank 6: 9643, COLLISIONS: 10485803
+OCCURRENCES rank 13: 11642, COLLISIONS: 10807150
+OCCURRENCES rank 11: 11528, COLLISIONS: 10826573
+OCCURRENCES rank 12: 11989, COLLISIONS: 11017396
+OCCURRENCES rank 5: 8437, COLLISIONS: 10252328
+Choice: OCCURRENCES rank 0: 10924, COLLISIONS: 10626197
+OCCURRENCES rank 1: 10758, COLLISIONS: 10648117
+OCCURRENCES rank 4: 10429, COLLISIONS: 10562177
+OCCURRENCES rank 2: 11483, COLLISIONS: 10732761
+OCCURRENCES rank 8: 9114, COLLISIONS: 10373304
+OCCURRENCES rank 14: 11280, COLLISIONS: 10730912
+OCCURRENCES rank 15: 12974, COLLISIONS: 10911477
+OCCURRENCES rank 7: 11760, COLLISIONS: 10825922
+OCCURRENCES rank 3: 11792, COLLISIONS: 10899652
+OCCURRENCES rank 9: 12448, COLLISIONS: 10976174
+OCCURRENCES rank 10: 13377, COLLISIONS: 11185647
+Total occurrences: 179578
+Total hash collisions: 171861590
+Time required: 19.378209 seconds
+Program executed by 16 cores over 16
+Collision rate: 99.8956%

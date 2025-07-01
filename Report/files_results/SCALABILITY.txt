@@ -1,0 +1,185 @@
+SCALABILITA: 250MB 1CORE, 500MB 2 CORE, 1GB 4 CORE, 2GB 8 CORE
+
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/Serial/ACA$ ./serial sequenza_250MB.txt pattern.txt 
+Using Boyer-Moore algorithm with hash functions (Serial Version)
+Text length: 262144000, Pattern length: 7
+Pattern: TACCTAA
+Total occurrences found: 15645
+Time required: 0.991422 seconds
+Algorithm: Boyer-Moore (Serial Implementation)
+
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 8 main sequenza_2GB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 2147483648
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 3: 12574, COLLISIONS: 0
+OCCURRENCES rank 4: 14333, COLLISIONS: 0
+OCCURRENCES rank 5: 15067, COLLISIONS: 0
+OCCURRENCES rank 1: 16113, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 16044, COLLISIONS: 0
+OCCURRENCES rank 2: 17401, COLLISIONS: 0
+OCCURRENCES rank 6: 18174, COLLISIONS: 0
+OCCURRENCES rank 7: 18793, COLLISIONS: 0
+Total occurrences: 128499
+Total hash collisions: 0
+Time required: 2.704685 seconds
+Program executed by 8 cores over 8
+
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 2 main sequenza_500MB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 524288000
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 1: 15830, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 15645, COLLISIONS: 0
+Total occurrences: 31475
+Total hash collisions: 0
+Time required: 1.256909 seconds
+Program executed by 2 cores over 2
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 main sequenza_1GB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 1073741824
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 3: 12574, COLLISIONS: 0
+OCCURRENCES rank 1: 16113, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 16044, COLLISIONS: 0
+OCCURRENCES rank 2: 17401, COLLISIONS: 0
+Total occurrences: 62132
+Total hash collisions: 0
+Time required: 1.741779 seconds
+Program executed by 4 cores over 4
+
+//////////////////////////////////////////////////////////////////////////////////
+
+ORA TESTIAMO LA SCALABILITA CON UN FILE DALLE DIMENSIONI DI 1GB PROVANDO PRIMA 1CORE, 2CORE, 4 CORE, 8 CORE.
+
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/Serial/ACA$ ./serial sequenza_1GB.txt pattern.txt 
+Using Boyer-Moore algorithm with hash functions (Serial Version)
+Text length: 1073741824, Pattern length: 7
+Pattern: TACCTAA
+Total occurrences found: 62132
+Time required: 4.014490 seconds
+Algorithm: Boyer-Moore (Serial Implementation)
+
+arco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 2 main sequenza_1GB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 1073741824
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 1: 29975, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 32157, COLLISIONS: 0
+Total occurrences: 62132
+Total hash collisions: 0
+Time required: 2.577458 seconds
+Program executed by 2 cores over 2
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 main sequenza_1GB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 1073741824
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 3: 12574, COLLISIONS: 0
+OCCURRENCES rank 1: 16113, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 16044, COLLISIONS: 0
+Total occurrences: 62132
+Total hash collisions: 0
+Time required: 1.737063 seconds
+Program executed by 4 cores over 4
+OCCURRENCES rank 2: 17401, COLLISIONS: 0
+marco_bernazzani01@v17-fat-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 8 main sequenza_1GB.txt pattern.txt 
+Boyer-Moore algorithm with new hash functions
+Text length: 1073741824
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 7: 5935, COLLISIONS: 0
+OCCURRENCES rank 6: 6639, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 7617, COLLISIONS: 0
+OCCURRENCES rank 3: 8024, COLLISIONS: 0
+OCCURRENCES rank 2: 8089, COLLISIONS: 0
+OCCURRENCES rank 4: 8246, COLLISIONS: 0
+OCCURRENCES rank 1: 8427, COLLISIONS: 0
+OCCURRENCES rank 5: 9155, COLLISIONS: 0
+Total occurrences: 62132
+Total hash collisions: 0
+Time required: 1.300916 seconds
+Program executed by 8 cores over 8
+

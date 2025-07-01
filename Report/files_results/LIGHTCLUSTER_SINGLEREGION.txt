@@ -1,0 +1,290 @@
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+1
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 9.475009 seconds
+Program executed by 4 cores over 4
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+2
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 26.722862 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+3
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 18.187168 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+4
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 21.397083 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+5
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 19.358211 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+6
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 19.370676 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+7
+OCCURRENCES rank 1: 40269, COLLISIONS: 0
+OCCURRENCES rank 3: 47885, COLLISIONS: 0
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 0
+OCCURRENCES rank 2: 46467, COLLISIONS: 0
+Total occurrences: 179578
+Total hash collisions: 0
+Time required: 41.595539 seconds
+Program executed by 4 cores over 4
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+8
+OCCURRENCES rank 1: 40269, COLLISIONS: 73948
+OCCURRENCES rank 3: 47885, COLLISIONS: 76993
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 75664
+OCCURRENCES rank 2: 46467, COLLISIONS: 76221
+Total occurrences: 179578
+Total hash collisions: 302826
+Time required: 16.901150 seconds
+Program executed by 4 cores over 4
+Collision rate: 62.7744%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+9
+OCCURRENCES rank 1: 40269, COLLISIONS: 9183501
+OCCURRENCES rank 3: 47885, COLLISIONS: 10155019
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 9790004
+OCCURRENCES rank 2: 46467, COLLISIONS: 10206620
+Total occurrences: 179578
+Total hash collisions: 39335144
+Time required: 17.322415 seconds
+Program executed by 4 cores over 4
+Collision rate: 99.5455%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+10
+OCCURRENCES rank 1: 40269, COLLISIONS: 56586068
+OCCURRENCES rank 3: 47885, COLLISIONS: 59597830
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 58050925
+OCCURRENCES rank 2: 46467, COLLISIONS: 59291604
+Total occurrences: 179578
+Total hash collisions: 233526427
+Time required: 16.782960 seconds
+Program executed by 4 cores over 4
+Collision rate: 99.9232%
+marco_bernazzani01@v1-aca:~/ACA---MPI_Ricerca_Genoma-/MPI/ACA$ mpirun -np 4 --hostfile ~/hostfile.txt ./main sequenza_pulita.txt pattern.txt
+Boyer-Moore algorithm with new hash functions
+Text length: 2945849067
+Pattern: TACCTAA, Pattern length: 7
+
+Select hash function:
+1. Standard Boyer-Moore (no hash)
+2. FNV-1a
+3. FNV-1a 64Bit
+4. xxHash32
+5. CRC32
+6. MurmurHash2
+7. PolyHash (custom)
+8. DJB2
+9. AddShift-hash
+10. XOR
+11. Better XOR
+11
+OCCURRENCES rank 1: 40269, COLLISIONS: 42126231
+OCCURRENCES rank 3: 47885, COLLISIONS: 43466934
+Choice: OCCURRENCES rank 0: 44957, COLLISIONS: 42906727
+OCCURRENCES rank 2: 46467, COLLISIONS: 43361698
+Total occurrences: 179578
+Total hash collisions: 171861590
+Time required: 18.172565 seconds
+Program executed by 4 cores over 4
+Collision rate: 99.8956%
