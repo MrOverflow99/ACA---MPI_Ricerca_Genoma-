@@ -94,11 +94,7 @@ long long int boyer_moore_search(const char *text, const char *pattern, size_t t
     return occurrences;
 }
 
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // This macro creates Boyer-Moore variants with hash verification
-// The hash is computed for pattern and text segments, and only
-// when hashes match is the full string comparison performed
-///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 #define BOYER_MOORE_WITH_HASH(hashfunc, funcname) \
 long long int boyer_moore_##funcname(const char *text, const char *pattern, size_t textlen, size_t patlen, long long int *collisions) { \

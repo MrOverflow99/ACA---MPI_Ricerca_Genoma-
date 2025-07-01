@@ -37,9 +37,7 @@ uint64_t djb2_hash(const char *str);
 uint64_t add_shift_hash(const char *str);
 uint64_t polyhash(const char *str);
 
-////////////////////
-/////HashPessime////
-////////////////////
+//HashPessime
 uint64_t xor_h(const char *str);
 uint64_t better_xor(const char *str);
 
